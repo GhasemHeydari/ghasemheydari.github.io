@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="title">Apsis Technology</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="stars"></canvas>
+
+    <header>
+      <div class="logoText">
+        <!-- <span>Apsis Technology</span> -->
+        <div class="brand">
+          <img src="Images/Logo.png" alt="ApsisTech Logo" class="logo" />
+          <span class="brand-name"></span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-toggle" id="navToggle">
+          <span></span><span></span><span></span>
+        </div>
+
+        <ul id="navMenu">
+          <li><a href="#home" id="menuHome">خانه</a></li>
+          <li><a href="#about" id="menuAbout">درباره</a></li>
+          <li><a href="#projects" id="menuProjects">پروژه‌ها</a></li>
+          <li><a href="#contact" id="menuContact">تماس</a></li>
+        </ul>
+      </nav>
+
+      <button id="langBtn">EN</button>
+    </header>
+
+    <div class="sidenav">
+      <br />
+      <a href="">دینامیک</a> <br />
+      <a href=""> کنترل</a> <br />
+      <a href=""> ناوبری</a> <br />
+      <a href=""> شبیه سازی</a> <br />
+    </div>
+
+    <main>
+      <section id="home" class="hero">
+        <h1 id="hero_title">هدایت، ناوبری و کنترل</h1>
+        <p id="hero_text">
+          انجام پروژه های مدل سازی و شبیه سازی هدایت، ناوبری و کنترل وسیله های
+          پروازی و شناوری
+        </p>
+      </section>
+
+      <section id="about" class="section">
+        <h2 id="about_title">درباره</h2>
+        <p id="about_text">
+          یک گروه حرفه ای از فارغ التحصیلان دانشگاه های متعبر کشور برای انجام هر
+          گونه پروژه مهندسی و تکنولوژی
+        </p>
+      </section>
+
+      <section id="projects" class="section">
+        <h2 id="projects_title">پروژه‌ها</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3 id="pr1_title">شبیه‌ساز مداری</h3>
+            <p id="pr1_text">محاسبه و نمایش مدار ماهواره با استفاده از RK4.</p>
+          </div>
+          <div class="project-card">
+            <h3 id="pr2_title">بصری‌سازی 2D</h3>
+            <p id="pr2_text">
+              نمایش مدار روی صفحه 2بعدی همراه با زمین در مرکز.
+            </p>
+          </div>
+          <div class="project-card">
+            <h3 id="pr3_title">ابزار آموزشی</h3>
+            <p id="pr3_text">
+              آموزش مفاهیم مداری برای دانشجویان مهندسی هوافضا.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    <div id="earth-container">
+      <h2 id="orbit_title" style="text-align: right">شبیه‌ساز مدار دو جسم</h2>
+      <section id="orbit-sim">
+        <form id="orbitForm">
+          <div class="form-row" style="text-align: center">
+            <label for="a">a (km):</label>
+            <input type="number" id="a" value="7000" step="10" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="e">e:</label>
+            <input
+              type="number"
+              id="e"
+              value="0.01"
+              step="0.001"
+              min="0"
+              max="0.99"
+              required
+            />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="inc">i (deg):</label>
+            <input type="number" id="inc" value="0" step="0.1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="raan">RAAN (deg):</label>
+            <input type="number" id="raan" value="0" step="0.1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="argp">ω (deg):</label>
+            <input type="number" id="argp" value="0" step="0.1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="ta">ν (deg):</label>
+            <input type="number" id="ta" value="0" step="0.1" required />
+          </div>
+
+          <div class="form-row" style="text-align: center">
+            <label for="year">سال:</label>
+            <input type="number" id="year" value="2026" step="1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="month">ماه:</label>
+            <input type="number" id="month" value="1" step="1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="day">روز:</label>
+            <input type="number" id="day" value="1" step="1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="hour">ساعت:</label>
+            <input type="number" id="hour" value="12" step="1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="minute">دقیقه:</label>
+            <input type="number" id="minute" value="0" step="1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label for="second">ثانیه:</label>
+            <input type="number" id="second" value="0" step="1" required />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label>Duration (sec)</label>
+            <input type="number" id="simTime" value="6000" />
+          </div>
+          <div class="form-row" style="text-align: center">
+            <label>Step (sec)</label>
+            <input type="number" id="stepTime" value="100" />
+          </div>
+          <button type="submit" id="btnSim">رسم مدار</button>
+        </form>
+
+        <p id="orbitStatus"></p>
+
+        <!-- <canvas id="orbitCanvas" width="400" height="400"></canvas> -->
+
+        <!-- ✅ ADDED 3D VIEW -->
+        <h3 style="text-align: center">3D Orbit Simulation</h3>
+        <div id="orbit3d-container">
+          <div id="threeContainer"></div>
+        </div>
+
+        <div id="orbitInfo">
+          <p id="periodText"></p>
+          <p id="energyText"></p>
+        </div>
+      </section>
+    </div>
+      <section id="contact" class="section">
+        <h2 id="contact_title">تماس</h2>
+        <p id="contact_text">
+          برای همکاری یا پیشنهاد، می‌توانید از طریق ایمیل info@apsistech.ir در
+          تماس باشید.
+        </p>
+      </section>
+    </main>
+    <div id="cesiumContainer"></div>
+
+    <footer class="footer">
+      <p id="footer_text">تمام حقوق این سایت محفوظ است.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/libs/three/three.min.js"></script>
+    <script src="/libs/three.module.js"></script>
+    <script src="/libs/three/OrbitControls.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
