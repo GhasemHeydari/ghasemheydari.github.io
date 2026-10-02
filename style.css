@@ -1,443 +1,877 @@
 /* تنظیمات پایه */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: sans-serif;
-    background: #020617;
-    color: #e5e7eb;
+    font-family: 'Vazirmatn', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    background: black;
+    color: white;
     overflow-x: hidden;
 }
 
-/* پس‌زمینه ستاره‌ها */
-#stars {
+#spaceCanvas {
     position: fixed;
-    inset: 0;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: -1;
-    background: radial-gradient(circle at bottom, #020617 0, #000 60%);
 }
 
-/* هدر */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+/* --- سیستم واحد لوگو (اصلاح اصلی اینجاست) --- */
+/* ===== APSIS UNIFIED LOGO ===== */
+/* ===== APSIS UNIFIED LOGO ===== */
+
+/* ===== APSIS UNIFIED LOGO ===== */
+
+.apsis-unified-logo{
+    width:850px;
+    height:auto;
+    position:relative;
+    margin:-30px auto -200px auto;
+    transform:rotate(0deg) scale(1);
+    transform-origin:center;
+    z-index:1000;
+    will-change:transform;
+    filter:none;
+}
+
+/* hover rotation */
+
+.apsis-unified-logo:hover{
+    animation:logoSpin 0.9s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes logoSpin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+
+/* logo transition animation */
+
+@keyframes apsisLogoMotion {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        /* از متغیرهایی که در JS محاسبه کردیم استفاده می‌کند */
+        transform: translate(var(--moveX), var(--moveY)) scale(var(--targetScale));
+    }
+}
+
+
+
+
+
+
+
+/* صفحه داخلی */
+
+/* .apsis-subpage .apsis-unified-logo{
+    animation:apsisLogoMotion 1.1s cubic-bezier(.22,1,.36,1) forwards;
+} */
+
+.apsis-subpage .apsis-unified-logo{
+
+position:fixed;
+
+top:15px;
+
+left: -10px ;
+
+width: 230px;
+
+margin:0;
+
+transform:none;
+
+animation:none;
+
+}
+
+
+/* صفحه اصلی */
+
+body:not(.apsis-subpage) .apsis-unified-logo{
+    position:relative;
+    top:auto;
+    left:auto;
+    transform:none;
+    margin:-30px auto -200px auto;
+    width:850px;
+    animation:none;
+}
+
+
+/* صفحه اصلی */
+.content, .hero-section {
+    background: transparent !important;
+    text-align: center;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1.5rem;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-}
-
-.logo span {
-    font-weight: 700;
-    color: #38bdf8;
-}
-
-/* ناوبری */
-.nav {
-    display: flex;
-    align-items: center;
-}
-
-.nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-}
-
-.nav a {
-    color: #e5e7eb;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-}
-
-.nav a:hover {
-    color: #38bdf8;
-}
-
-/* دکمه زبان */
-#langBtn {
-    margin-right: 1rem;
-    padding: 0.35rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid #38bdf8;
-    background: transparent;
-    color: #e5e7eb;
-    cursor: pointer;
-    font-size: 0.8rem;
-}
-
-/* دکمه منوی موبایل */
-.nav-toggle {
-    display: none;
     flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    margin-top: -20px !important;
+}
+
+.hero-section h1.fade-in {
+    color: rgb(211, 214, 217);
+    font-size: 40px;
+    width: 95%;
+    max-width: 1800px;
+    margin-bottom: 20px !important;
+}
+
+.hero-section p.fade-in-delay {
+    color: rgb(211, 214, 217);
+    font-size: 20px;
+    max-width: 550px;
+    margin: 0 auto !important;
+    opacity: 0.9;
+}
+/* -------- PAGE TRANSITION -------- */
+#pageContent{
+transition:opacity .45s ease;
+}
+
+.page-fade-out #pageContent{
+opacity:0;
+}
+
+
+
+/* درباره ما */
+.about-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 10x 5px;
+}
+
+.about-image { width: 35%; border-radius: 10px; }
+.about-text { width: 50%; color: #f5f5f5; direction: rtl; text-align: justify; }
+.about-text h2 { font-size: 30px; color: #87d4f8; margin-bottom: 15px; }
+.about-text p { font-size: 15px; line-height: 1.9; }
+
+/* فوتر - دقیقاً مطابق استایل قبلی شما */
+.main-footer {
+    position: fixed; bottom: 0; left: 0;
+    width: 100%; height: 70px;
+    background: rgb(1, 2, 10);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+}
+.footer-buttons {
+    position: absolute; top: -25px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 15px; direction: rtl;
+}
+.footer-card {
+    width: 130px; padding: 5px 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px; text-decoration: none; color: white;
+    backdrop-filter: blur(8px); transition: all .3s ease;
+}
+.footer-card:hover {
+    border-color: #a5dcf5;
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.35);
+    transform: translateY(-6px) scale(1.05);
+}
+.footer-content { position: absolute; bottom: 10px; right: 40px; color: #64748b; font-size: 0.75rem; }
+
+/* تماس با ما - استایل شیشه‌ای لوکس شما */
+:root { --apsis-cyan: #00f2ff; --apsis-blue: #0072ff; --apsis-border: rgba(255, 255, 255, 0.1); }
+.apsis-main-container { display:flex; justify-content: center; align-items: center; min-height: 85vh; padding: 5px 5px; box-sizing: border-box;}
+.apsis-glass-card {
+    width: 90%; max-width: 900px;
+    background: rgba(37, 46, 75, 0); 
+    backdrop-filter: blur(6px);
+    border-radius: 40px; padding: 20px; border: 1px solid var(--apsis-border);
+    opacity: 0; transform: translateY(15px);
+    animation: revealContent 0.8s ease-out forwards 0.4s;
+}
+@keyframes revealContent { to { opacity: 1; transform: translateY(0); } }
+.apsis-card-header { text-align: center; margin-bottom: 20px; }
+.apsis-card-header h1 { font-size:30px; color: #fff; }
+.apsis-header-line { width: 140px; height: 3px; margin: 0 auto; background: linear-gradient(90deg, transparent, var(--apsis-cyan), var(--apsis-blue), transparent); position: relative; }
+.apsis-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    gap: 0 30px;
+}
+.apsis-form-section {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    display: grid;
+    grid-template-rows: subgrid;
+    row-gap: 6px;
+}
+
+.apsis-btn-submit {
+    font-family: 'Vazirmatn', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 16px;
+    background: linear-gradient(90deg, var(--apsis-cyan), var(--apsis-blue));
+    border: none;
+    border-radius: 14px;
+    color: #000;
+    font-weight: 800;
+    font-size: 14px;
     cursor: pointer;
-    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+.apsis-info-section {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    display: grid;
+    grid-template-rows: subgrid;
+    gap: 8px;
+}
+.apsis-form-section label {
+    display: block;
+    color: #94a3b8;
+    font-size: 14px;
+    margin-bottom: 4px;
+    text-align: right;
+        align-self: end;
+
 }
 
-.nav-toggle span {
-    width: 20px;
-    height: 2px;
-    background: #e5e7eb;
+.apsis-form-section input,
+.apsis-form-section textarea {
+    font-family: 'Vazirmatn', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 14px;
+    text-align: right;
+    resize: none;
 }
 
-/* قهرمان / hero */
-.hero {
-    padding: 4rem 1.5rem 3rem;
+.apsis-form-section input:focus,
+.apsis-form-section textarea:focus {
+    outline: none;
+    border-color: var(--apsis-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+.apsis-info-tile {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 14px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    flex-direction: row-reverse;
+}
+.apsis-info-tile.cyan-hover {
+    grid-row: 1 / 3;   /* برابر label نام + input نام */
+    align-self: stretch;
+}
+
+.apsis-info-tile.blue-hover {
+    grid-row: 3 / 5;   /* برابر label ایمیل + input ایمیل */
+    align-self: stretch;
+}
+
+.apsis-tile-icon { width: 30px; height: 30px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.3); }
+.cyan-glow { border: 1px solid var(--apsis-cyan); color: var(--apsis-cyan); }
+.blue-glow { border: 1px solid var(--apsis-blue); color: var(--apsis-blue); }
+.apsis-social-card {
+    grid-row: 5 / 7;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 16px;
+}
+
+.apsis-social-card h3 {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.apsis-social-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--apsis-cyan), var(--apsis-blue), transparent);
+    margin-bottom: 12px;
+}
+.apsis-social-icons { display: flex; justify-content: center; gap: 15px; margin-top: 15px;}
+.apsis-icon-circle { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
+.apsis-btn-submit {
+    transition: all 0.3s ease;
+}
+
+.apsis-btn-submit:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
+}
+
+.apsis-info-tile {
+    transition: all 0.3s ease;
+}
+
+.apsis-info-tile:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.25);
+}
+.apsis-icon-circle {
+    transition: all 0.3s ease;
+}
+
+.apsis-icon-circle:hover {
+    transform: scale(1.15);
+    border-color: var(--apsis-cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+}
+.apsis-glass-card{
+
+    transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+
+}
+
+.apsis-glass-card:hover{
+
+    transform:translateY(-8px) scale(1.01);
+
+    border-color:rgba(0,242,255,0.35);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,0.6),
+    0 0 35px rgba(0,242,255,0.25);
+
+}
+/* فعال کردن فضای سه‌بعدی */
+.apsis-unified-logo{
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+/* هاور مستقیم */
+.apsis-unified-logo:hover{
+    transform: scale(1.2);
+    filter: brightness(1.25);
+}
+
+/* برای صفحه اصلی که داخل hero است */
+.hero-section:hover .apsis-unified-logo{
+    transform: scale(1.2);
+    filter: brightness(1.25);
+}
+.apsis-form-section input::placeholder,
+.apsis-form-section textarea::placeholder {
+    color: rgba(148, 163, 184, 0.5);
+}
+
+/* message group: textarea + button در یک ردیف subgrid */
+.apsis-message-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+}
+
+.apsis-message-group textarea {
+    flex: 1;
+    resize: none;
+}
+
+.apsis-message-group .apsis-btn-submit {
+    align-self: stretch; /* اینجا stretch درسته — flex نه grid */
+    flex-shrink: 0;
+    padding: 10px 16px;
+    font-size: 14px;
+    width: 100%;
+}
+/* coming soon */
+.apsis-coming-soon {
+    text-align: center;
+    color: rgba(148, 163, 184, 0.6);
+    font-size: 13px;
+    margin-top: 10px;
+}
+/* ============================================================
+   بخش اختصاصی شبیه‌ساز مداری (APSIS ORBIT SIMULATOR)
+   ============================================================ */
+
+/* ============================================================
+   نسخه بهینه‌شده و جمع‌وجور شبیه‌ساز (فشرده برای جلوگیری از تداخل با فوتر)
+   ============================================================ */
+
+.orbit-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: stretch;
+    width: 95%;
+    max-width: 1200px;
+    margin: 90px auto 20px auto;
+    height: 500px;
+    gap: 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+      opacity: 0; transform: translateY(15px);
+    animation: revealContent 0.8s ease-out forwards 0.4s;
+
+}
+
+/* پنل تنظیمات سمت راست */
+.orbit-settings-panel {
+    flex: 0 0 300px;
+    background: rgba(1, 3, 10, 0.836);
+
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 20px;
+    padding: 15px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+     transform: translateZ(0);
+    will-change: backdrop-filter, transform;
+    contain: paint;
+}
+
+
+.orbit-settings-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+
+    background: rgba(37, 46, 75, 0.5);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    pointer-events: none;
+    z-index: 0;
+        transform: translateZ(0);
+    will-change: backdrop-filter;
+}
+
+/*
+  همه محتوای پنل باید بالای لایه blur باشد.
+*/
+.orbit-settings-panel > * {
+    position: relative;
+    z-index: 1;
+}
+
+.panel-header h2 {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 2px;
     text-align: center;
 }
 
-.hero h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+.panel-header p {
+    text-align: center;
+    color: #fff;
+    font-size: 0.75rem;
+    margin-bottom: 15px;
 }
 
-.hero p {
-    max-width: 600px;
-    margin: 0.5rem auto 0;
-    line-height: 1.7;
-}
-
-/* کانتینر زمین و شبیه‌ساز */
-#earth-container {
-    padding: 2rem 1.5rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* زمین */
-.earth-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.earth {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #4ade80, #0ea5e9 40%, #082f49);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-    animation: spin 20s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* سکشن‌ها */
-.section {
-    padding: 2.5rem 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.section h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
-}
-
-.section p {
-    line-height: 1.7;
-    color: #e5e7eb;
-}
-
-/* گرید پروژه‌ها */
-.project-grid {
+/* شبکه اینپوت‌ها */
+.form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.project-card {
-    background: rgba(15, 23, 42, 0.9);
-    border-radius: 0.75rem;
-    border: 1px solid rgba(148, 163, 184, 0.4);
-    padding: 1rem;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
-}
-
-.project-card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
-    color: #38bdf8;
-}
-
-.project-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-/* شبیه‌ساز مدار */
-#orbit-sim {
-    width: 100%;
-    max-width: 600px;
-    margin: 1.5rem auto 0;
-    background: rgba(15, 23, 42, 0.95);
-    border-radius: 0.75rem;
-    border: 1px solid rgba(148, 163, 184, 0.5);
-    padding: 1rem 1.2rem 1.3rem;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
-}
-
-#orbit-sim h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-    color: #38bdf8;
-}
-
-#orbitForm {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.75rem 1rem;
-    margin-bottom: 0.75rem;
-}
-
-.form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    direction: rtl;
 }
 
 .form-row label {
-    font-size: 0.8rem;
+    display: block;
+    font-size: 11px;
+    color: #38bdf8;
+    margin-bottom: 4px;
+    padding-right: 3px;
 }
 
 .form-row input {
-    padding: 0.25rem 0.4rem;
-    border-radius: 0.4rem;
-    border: 1px solid rgba(148, 163, 184, 0.6);
-    background: #020617;
-    color: #e5e7eb;
-    font-size: 0.8rem;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 8px;
+    padding: 8px 5px;
+    color: #fff;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.85rem;
+    box-sizing: border-box;
 }
 
+/* دکمه اجرا */
 #btnSim {
-    grid-column: 1 / -1;
-    margin-top: 0.3rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-    border: none;
-    background: linear-gradient(90deg, #22c55e, #38bdf8);
+    width: 100%;
+    margin: 15px auto 0 auto;
+    padding: 12px 0;
+    background: #38bdf8;
     color: #020617;
-    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    font-weight: 800;
     cursor: pointer;
     font-size: 0.85rem;
+    transition: 0.3s;
+    font-family: "vazirmatn";
+}
+
+#btnSim:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
 }
 
 #orbitStatus {
-    font-size: 0.8rem;
-    margin-bottom: 0.3rem;
-}
-
-#orbitCanvas {
-    display: none;
-    margin: 0.5rem auto 0.5rem;
-    background: radial-gradient(circle at center, #020617 0, #000 60%);
-    border-radius: 50%;
-    border: 1px solid rgba(148, 163, 184, 0.6);
-}
-
-#orbitInfo {
-    font-size: 0.8rem;
-    line-height: 1.6;
-}
-
-/* فوتر */
-.footer {
+    margin-top: 10px;
     text-align: center;
-    padding: 1.5rem 1rem 2rem;
-    font-size: 0.8rem;
-    color: #9ca3af;
+    font-size: 0.7rem;
+    color: #64748b;
 }
 
-/* موبایل */
-@media (max-width: 768px) {
-    .nav ul {
-        position: absolute;
-        top: 56px;
-        right: 0;
-        background: rgba(15, 23, 42, 0.98);
-        flex-direction: column;
-        padding: 0.75rem 1rem;
-        gap: 0.75rem;
-        display: none;
-    }
-
-    .nav ul.open {
-        display: flex;
-    }
-
-    .nav-toggle {
-        display: flex;
-    }
-}
-/* ✅ ADDED 3D VIEW */
-#orbit3d-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0.5rem auto 1rem;
+/* کادر شبیه‌ساز سمت چپ */
+.orbit-viewer {
+    flex: 1;
+    border-radius: 20px;
+    background: radial-gradient(circle at center, rgba(29, 36, 59, 0.884), #020617 100%);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
 }
 
 #threeContainer {
     width: 100%;
-    height: 400px;
-    background: #000;
-    border-radius: 0.75rem;
-    border: 1px solid rgba(148, 163, 184, 0.6);
+    height: 100%;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+    display: block;
 }
 
-/* === Side Navigation === */
-.sidenav {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 20px; /* change to right:20px for RTL preference */
-
-  background: rgba(10, 15, 30, 0.75);
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  border-radius: 12px;
-
-  padding: 12px 10px;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
-
-  z-index: 1000;
+/* برای اطمینان از اینکه canvas کل باکس را می‌گیرد */
+#threeContainer canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
 }
 
-/* Links */
-.sidenav a {
-  display: block;
-  color: #cbd5f5;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 8px 14px;
-  margin: 4px 0;
+/* اصلاح موبایل */
+@media (max-width: 900px) {
+    .orbit-container {
+        height: auto;
+        flex-direction: column;
+    }
 
-  border-radius: 8px;
-  transition: all 0.25s ease;
-  position: relative;
+    .orbit-viewer {
+        height: 350px;
+        min-height: 350px;
+    }
+
+    #threeContainer {
+        height: 350px;
+        min-height: 350px;
+    }
 }
 
-/* Hover effect */
-.sidenav a:hover {
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.1);
-  transform: translateX(4px);
+/* ================================
+   Projects Page
+================================ */
+/* جلوگیری از مسدود کردن اسکرول توسط هدر یا لایه‌های پس‌زمینه */
+body {
+    overflow-y: scroll; /* همیشه scrollbar رو نشون بده، حتی اگه محتوا کوتاه باشه */
+}
+.project-card img {
+    pointer-events: none;
+    user-select: none;
 }
 
-/* Active / selected (optional class) */
-.sidenav a.active {
-  background: rgba(56, 189, 248, 0.2);
-  color: #38bdf8;
-  box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.2);
+.projects-hero {
+    pointer-events: none !important;
+     margin-top: 70px;
+    margin-bottom: 5px;
 }
 
-/* Subtle glow line on hover */
-.sidenav a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 0%;
-  width: 3px;
-  background: #38bdf8;
-  border-radius: 2px;
-  transition: height 0.3s ease;
+/* اما محتوای داخلش مثل متن‌ها یا دکمه‌ها باید کار کنند */
+.projects-hero h1, 
+.projects-hero p, 
+.projects-grid {
+    pointer-events: auto;
 }
 
-.sidenav a:hover::before {
-  height: 70%;
+.projects-page{
+    width:100%;
+    max-width: 100vw; /* اجازه بده کل عرض صفحه رو بگیره */
+        height: 100vh;
+    margin: 0;
+    text-align:center;
+    padding: 0;
+            overflow-x:hidden;   /* جلوگیری از اسکرول افقی کل سایت */
+    overflow: hidden;
+     opacity: 0; transform: translateY(15px);
+    animation: revealContent 0.8s ease-out forwards 0.4s;
+   
 }
 
-/* RTL support (for Persian) */
-html[dir="rtl"] .sidenav {
-  left: auto;
-  right: 20px;
+@keyframes fadeInPage {
+    to { opacity: 1; }
 }
 
-html[dir="rtl"] .sidenav a:hover {
-  transform: translateX(-4px);
+
+
+
+ .projects-header {
+    margin-top: 200px;
+    margin-bottom: 10px;
+}
+.projects-header h1{
+    font-size:2rem;
+    color:#38bdf8;
+    margin: 0 0 15px 0;
 }
 
-html[dir="rtl"] .sidenav a::before {
-  left: auto;
-  right: 0;
+.projects-header p{
+    color:#94a3b8;
+    font-size:0.9rem;
+    margin: 0;
 }
 
-/* === Brand / Logo === */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* گرید پروژه ها */
+
+.projects-grid {
+    position: relative;
+    width: 100%;
+    height: 350px;
+        top: 60px;
+
+    margin: 10px auto 0;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    overflow: visible;
+    user-select: none;
+    cursor: grab;
 }
 
-/* Logo image */
-.logo {
-  height: 100px;
-  width: auto;
-  object-fit: contain;
-
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.5));
-  transition: transform 0.3s ease, filter 0.3s ease;
+.projects-grid.is-dragging {
+    cursor: grabbing;
 }
-
-/* Logo image */
-.logoText {
-  height: 42px;
-  width: auto;
-  object-fit: contain;
-
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.5));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* Hover glow effect */
-.logo:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
-}
-
-/* Brand text */
-.brand-name {
-  font-size: 20px;
-  font-weight: 500;
-  color: #cbd5f5;
-  letter-spacing: 1px;
-}
-
-/* Optional: hide text on small screens */
-@media (max-width: 600px) {
-  .brand-name {
+.projects-grid::-webkit-scrollbar {
     display: none;
-  }
+}
+/* کارت پروژه */
+
+.project-card {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    width: 320px;
+        height: 320px; /* ارتفاع ثابت */
+          background: rgba(15, 23, 42, 0.8); /* پس‌زمینه کارت تا دیده شود */
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden; /* جلوگیری از پرش */
+    min-height: 280px;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    transition:
+        transform 0.45s cubic-bezier(.22,.61,.36,1),
+        opacity 0.35s ease,
+        filter 0.35s ease;
+    will-change: transform, opacity, filter;
+    pointer-events: auto;
+        overflow: hidden;
+
 }
 
-/* .brand {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  z-index: 1000;
+.project-card.is-center {
+    z-index: 50;
 }
 
-html[dir="rtl"] .brand {
-  left: auto;
-  right: 30px;
-} */
+.project-card h3{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+.project-card p{
+    color:#cbd5f5;
+    font-size:0.85rem;
+    line-height:1.7;
+}
+
+/* دکمه */
+
+.project-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 10px;
+    background:#38bdf8;
+    color:#020617;
+    border-radius:8px;
+    font-weight:700;
+    text-decoration:none;
+    font-size:0.8rem;
+}
+
+.project-btn:hover{
+    background:#0ea5e9;
+}
+/* ================================
+   Space Hover Effect (Projects)
+   بدون تغییر در ساختار فعلی
+================================ */
+
+/* کارت پروژه */
+
+
+/* نور متحرک زیر موس */
+
+.project-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(
+        400px circle at var(--x,50%) var(--y,50%),
+        rgba(56,189,248,0.18),
+        transparent 40%
+    );
+    opacity:0;
+    transition:opacity .4s ease;
+    pointer-events:none;
+        z-index: 0;
+
+}
+
+/* هنگام hover نور فعال شود */
+
+.project-card:hover::before{
+    opacity:1;
+}
+
+/* glow واقعی */
+
+.project-card:hover {
+    border-color: rgba(56,189,248,.45);
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.6),
+        0 0 18px rgba(56,189,248,.25);
+}
+
+
+/* glow زیر کارت */
+
+.project-glow{
+    position:absolute;
+    inset:-1px;
+    border-radius:inherit;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .4s ease;
+    background:
+        radial-gradient(
+            circle at var(--x,50%) var(--y,50%),
+            rgba(56,189,248,.35),
+            transparent 45%
+        );
+            z-index: 1;
+
+}
+
+.project-card:hover .project-glow{
+    opacity:.6;
+}
+
+/* حرکت نرم دکمه */
+
+.project-btn{
+    transition:all .3s ease;
+}
+
+.project-card:hover .project-btn{
+    transform:translateX(-4px);
+}
+.project-content{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    position: relative;
+    z-index: 2;
+}
+
+/* متن فضای انعطاف‌پذیر بگیرد */
+.project-content p{
+    flex-grow:1;
+}
+
+/* دکمه همیشه پایین و وسط */
+.project-btn{
+    margin-top:auto;          /* هل دادن به پایین */
+    align-self:center;        /* وسط افقی */
+    min-width:160px;          /* عرض ثابت برای نظم */
+    text-align:center;
+}
+/* ================================
+   Floating Glass Button
+================================ */
+
+.project-btn{
+    position:relative;
+    padding:10px 22px;
+
+    background:rgba(56,189,248,0.08);
+    border:1px solid rgba(56,189,248,0.35);
+
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+    border-radius:30px;
+
+    color:#38bdf8;
+    font-weight:600;
+    font-size:.85rem;
+
+    transition:all .35s ease;
+
+    box-shadow:
+        inset 0 0 8px rgba(56,189,248,.15),
+        0 0 12px rgba(56,189,248,.12);
+}
+
+/* Hover */
+
+.project-btn:hover{
+
+    background:rgba(56,189,248,0.18);
+
+    box-shadow:
+        0 0 18px rgba(56,189,248,.45),
+        inset 0 0 12px rgba(56,189,248,.25);
+
+    transform:translateY(-2px);
+}
